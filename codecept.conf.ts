@@ -13,8 +13,13 @@ export const config: CodeceptJS.MainConfig = {
     Playwright: {
       browser: 'chromium',
       url: 'https://www.colorado.gov/revenueonline/_/',
-      show: true
-    }
+      show: true,
+      waitForNavigation: "load",
+      pressKeyDelay: 100
+      // waitForAction: 1000
+
+    },
+    FileSystem: {}
   },
   include: {
     I: './steps_file'
