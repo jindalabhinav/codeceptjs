@@ -18,11 +18,9 @@ Scenario('download and save CO Location report', async ({ I }) => {
 
     
     I.click('.DocTableHeader');
-    
-    // pause();
 
     I.handleDownloads('downloads/COLocationReport.txt');
     I.click('Export');
     I.amInPath('output/downloads');
-    // I.waitForFile('COLocationReport.txt', 5); // not working
+    I.waitForFile('COLocationReport.txt', 5);
 });
