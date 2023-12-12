@@ -1,3 +1,5 @@
+import request from './request.json';
+
 Feature('location-report');
 
 Scenario('download and save CO Location report', async ({ I }) => {
@@ -12,10 +14,9 @@ Scenario('download and save CO Location report', async ({ I }) => {
 
     await retryTo((tryNum) => {
         I.clearField('Colorado Account Number');
-        I.fillField('Colorado Account Number', '94608811');
-        I.seeInField('Colorado Account Number', '94608811');
+        I.fillField('Colorado Account Number', request.accountNumber);
+        I.seeInField('Colorado Account Number', request.accountNumber);
     }, 3);
-
     
     I.click('.DocTableHeader');
 
