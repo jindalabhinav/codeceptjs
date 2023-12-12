@@ -6,13 +6,12 @@ Scenario('download and save CO Location report', async ({ I }) => {
     I.amOnPage('/');
     tryTo(() => I.click('Click Here to Start Over', '.SessionMessageContainer'));
     tryTo(() => I.click('Click here'));
-    I.waitForClickable('Find Sales and Use Tax Rates');
-    I.click('Find Sales and Use Tax Rates');
-    I.waitForClickable('View Business Location Rates');
-    I.retry().click('View Business Location Rates');
-    I.see('Colorado Account Number');
+    I.retry({ retries: 3, minTimeout: 200 }).click('Find Sales and Use Tax Rates');
+    I.retry({ retries: 3, minTimeout: 200 }).click('View Business Location Rates');
+    
 
-    await retryTo((tryNum) => {
+    await retryTo(() => {
+        I.see('Colorado Account Number');
         I.clearField('Colorado Account Number');
         I.fillField('Colorado Account Number', request.accountNumber);
         I.seeInField('Colorado Account Number', request.accountNumber);
@@ -23,5 +22,6 @@ Scenario('download and save CO Location report', async ({ I }) => {
     I.handleDownloads('downloads/COLocationReport.txt');
     I.click('Export');
     I.amInPath('output/downloads');
-    I.waitForFile('COLocationReport.txt', 5);
+    // Handle slow connection, fails when download is not finished
+    I.waitForFile('COLocationReport.txt', 10);
 });
