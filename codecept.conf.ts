@@ -11,8 +11,8 @@ export const config: CodeceptJS.MainConfig = {
   output: './output',
   helpers: {
     Playwright: {
-      browser: 'chromium',
-      url: 'https://www.colorado.gov/revenueonline/_/',
+      browser: 'firefox',
+      url: 'http://localhost:5500/static',
       show: true,
       waitForNavigation: "load",
       pressKeyDelay: 100
@@ -23,6 +23,11 @@ export const config: CodeceptJS.MainConfig = {
   },
   include: {
     I: './steps_file'
+  },
+  plugins: {
+    heal: {
+      enabled: true
+    }
   },
   name: 'codeceptjs'
 }

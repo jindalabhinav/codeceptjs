@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Website - Auto-healing Testing</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px 100px;
+	  
+    }
+    header {
+      background-color: #f5f5f5;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0;
+    }
+    nav a {
+      color: #333;
+      text-decoration: none;
+      padding: 5px 10px;
+      margin-left: 10px;
+    }
+    section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+    .button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+	  margin-top: 10px;
+    }
+    #error-message, #success-message {
+      color: red;
+      margin-top: 10px;
+    }
+    .contact-textarea {
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Demo Website</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="login">
+      <h2>Login</h2>
+        <label for="username">Username (Class will change):</label>
+        <input type="text" id="username" placeholder="Enter your username" class="login-input">
+        <br>
+        <label for="password">Password (ID will change):</label>
+        <input type="password" id="password" placeholder="Enter your password" class="login-input">
+        <br>
+        <button id="login-button" class="button">Login</button>
+      <p id="error-message">Invalid username or password.</p>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Name:</label>
+        <br>
+        <input type="text" id="name" placeholder="Enter your name" class="contact-input">
+        <br>
+        <label for="email">Email:</label>
+        <br>
+        <input type="email" id="email" placeholder="Enter your email address" class="contact-input">
+        <br>
+        <label for="message">Message:</label>
+        <br>
+        <textarea id="message" placeholder="Write your message" class="contact-textarea"></textarea>
+        <br>
+        <button id="contact-button" class="button">Send Message</button>
+      </form>
+      <p id="success-message" style="display: none;">Thank you for your message! We'll be in touch soon.</p>
+    </section>
+  </main>
+
+  <script>
+    const errorMessageElement = document.getElementById('error-message');
+    const successMessageElement = document.getElementById('success-message');
+    errorMessageElement.style.display = "none";
+    // hideErrorMessage()
+
+    // const hideErrorMessage = () => errorMessageElement.style.display = 'none';
+    // const hideSuccessMessage = () => successMessageElement.style.display = 'none';
+
+    const clearLoginForm = () => {
+      document.getElementById('username').value = '';
+      document.getElementById('password').value = '';
+      //hideErrorMessage();
+    };
+
+    const clearContactForm = () => {
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+      //hideSuccessMessage();
+    };
+
+    const loginButton = document.getElementById('login-button');
+    loginButton.addEventListener('click', () => {
+      clearLoginForm();
+      errorMessageElement.style.display = 'block';
+    });
+
+    const contactButton = document.getElementById('contact-button');
+    contactButton.addEventListener('click', () => {
+      clearContactForm();
+      successMessageElement.style.display = 'block';
+    });
+
+    //hideErrorMessage();
+    //hideSuccessMessage();
+  </script>
+</body>
+</html>
