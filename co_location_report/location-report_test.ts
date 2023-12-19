@@ -8,7 +8,6 @@ Scenario('download and save CO Location report', async ({ I }) => {
     tryTo(() => I.click('Click here'));
     I.retry({ retries: 3, minTimeout: 200 }).click('Find Sales and Use Tax Rates');
     I.retry({ retries: 3, minTimeout: 200 }).click('View Business Location Rates');
-    
 
     await retryTo(() => {
         I.see('Colorado Account Number');

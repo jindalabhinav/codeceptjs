@@ -1,0 +1,8 @@
+
+
+<<< Recorded commands on Fri Dec 15 2023 01:51:24 GMT+0530 (India Standard Time)
+I.fillFeild('Username', abhinav)
+I.fillFeild('Username', 'abhinav')
+I.fillField('Username', 'abhinav')
+I.fillField('Password', 'abcd1234')
+I.click('Login')
