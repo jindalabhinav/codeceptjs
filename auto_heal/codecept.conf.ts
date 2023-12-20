@@ -27,12 +27,11 @@ export const config: CodeceptJS.MainConfig = {
   },
   plugins: {
     heal: {
-      enabled: true,
-      openaiApiKey: "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",
-      ai: {
-        enabled: true, // Enable AI suggestions for test writing and healing
-      }
-    }
+      enabled: true
+    },
+    autoDelay: {
+     enabled: true
+   }
   },
   ai: {
     model: 'gpt-3.5-turbo-16k',
