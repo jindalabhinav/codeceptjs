@@ -5,5 +5,6 @@ Scenario('test something',  ({ I }) => {
     I.fillField('Username', 'abhinav');
     I.fillField('Password', 'abcd1234');
     I.click('Login');
-    pause();
+    I.see('Invalid username or password.');
+    //pause();
 });
